@@ -10,13 +10,13 @@ export default function retry(maxTries, delayLength, fn, ...args) {
   return fsmIterator(
     // prettier-ignore
     {
-      'q1': () => {
+      'q1'() {
         return { nextState: 'q2', effect: yCall, errorState: 'q10' }
       },
-      'q2': () => {
+      'q2'() {
         return { nextState: qEnd }
       },
-      'q10': error => {
+      'q10'(error) {
         counter -= 1
         if (counter <= 0) {
           throw error

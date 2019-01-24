@@ -16,16 +16,16 @@ export default function throttle(delayLength, pattern, worker, ...args) {
   return fsmIterator(
     // prettier-ignore
     {
-      'q1': () => {
+      'q1'() {
         return { nextState: 'q2', effect: yActionChannel, stateUpdater: setChannel }
       },
-      'q2': () => {
+      'q2'() {
         return { nextState: 'q3', effect: yTake(), stateUpdater: setAction }
       },
-      'q3': () => {
+      'q3'() {
         return { nextState: 'q4', effect: yFork(action) }
       },
-      'q4': () => {
+      'q4'() {
         return { nextState: 'q2', effect: yDelay }
       },
     },
