@@ -9,11 +9,12 @@ export default function takeEvery(patternOrChannel, worker, ...args) {
     setAction = ac => (action = ac)
 
   return fsmIterator(
+    // prettier-ignore
     {
-      q1: () => {
+      'q1': () => {
         return { nextState: 'q2', effect: yTake, stateUpdater: setAction }
       },
-      q2: () => {
+      'q2': () => {
         return { nextState: 'q1', effect: yFork(action) }
       },
     },

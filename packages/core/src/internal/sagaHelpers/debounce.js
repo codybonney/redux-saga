@@ -19,14 +19,15 @@ export default function debounceHelper(delayLength, patternOrChannel, worker, ..
   const setRaceOutput = ro => (raceOutput = ro)
 
   return fsmIterator(
+    // prettier-ignore
     {
-      q1: () => {
+      'q1': () => {
         return { nextState: 'q2', effect: yTake, stateUpdater: setAction }
       },
-      q2: () => {
+      'q2': () => {
         return { nextState: 'q3', effect: yRace, stateUpdater: setRaceOutput }
       },
-      q3: () => {
+      'q3': () => {
         return raceOutput.debounce
           ? { nextState: 'q1', effect: yFork(action) }
           : { nextState: 'q2', effect: yNoop(raceOutput.action), stateUpdater: setAction }
