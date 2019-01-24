@@ -60,7 +60,7 @@ export function makeIterator(next, thro = kThrow, name = 'iterator') {
   const iterator = { meta: { name }, next, throw: thro, return: kReturn, isSagaIterator: true }
 
   if (typeof Symbol !== 'undefined') {
-    iterator[Symbol.iterator] = () => iterator
+    iterator[Symbol['iterator']] = () => iterator
   }
   return iterator
 }
