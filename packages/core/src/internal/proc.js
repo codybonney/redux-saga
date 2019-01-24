@@ -71,7 +71,7 @@ export default function proc(env, iterator, parentContext, parentEffectId, meta,
     try {
       let result
       if (isErr) {
-        result = iterator.throw(arg)
+        result = iterator['throw'](arg)
         // user handled the error, we can clear bookkept values
         sagaError.clear()
       } else if (shouldCancel(arg)) {

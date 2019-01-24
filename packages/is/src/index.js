@@ -8,7 +8,7 @@ export const string = s => typeof s === 'string'
 export const array = Array.isArray
 export const object = obj => obj && !array(obj) && typeof obj === 'object'
 export const promise = p => p && func(p.then)
-export const iterator = it => it && func(it.next) && func(it.throw)
+export const iterator = it => it && func(it.next) && func(it['throw'])
 export const iterable = it => (it && func(Symbol) ? func(it[Symbol.iterator]) : array(it))
 export const task = t => t && t[TASK]
 export const observable = ob => ob && func(ob.subscribe)
