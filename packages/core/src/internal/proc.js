@@ -91,7 +91,7 @@ export default function proc(env, iterator, parentContext, parentEffectId, meta,
           If this Generator has a `return` method then invokes it
           This will jump to the finally block
         **/
-        result = is.func(iterator.return) ? iterator.return(TASK_CANCEL) : { done: true, value: TASK_CANCEL }
+        result = is.func(iterator['return']) ? iterator['return'](TASK_CANCEL) : { done: true, value: TASK_CANCEL }
       } else if (shouldTerminate(arg)) {
         // We get TERMINATE flag, i.e. by taking from a channel that ended using `take` (and not `takem` used to trap End of channels)
         result = is.func(iterator.return) ? iterator.return() : { done: true }

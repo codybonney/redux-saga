@@ -58,7 +58,7 @@ const kThrow = err => {
 const kReturn = value => ({ value, done: true })
 export function makeIterator(next, thro = kThrow, name = 'iterator') {
   // prettier-ignore
-  const iterator = { meta: { name }, next, 'throw': thro, return: kReturn, isSagaIterator: true }
+  const iterator = { 'meta': { 'name': name }, 'next': next, 'throw': thro, 'return': kReturn, 'isSagaIterator': true }
 
   if (typeof Symbol !== 'undefined') {
     iterator[Symbol['iterator']] = () => iterator

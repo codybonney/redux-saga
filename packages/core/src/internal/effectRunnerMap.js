@@ -21,8 +21,8 @@ import {
 } from './utils'
 
 function getIteratorMetaInfo(iterator, fn) {
-  if (iterator.isSagaIterator) {
-    return { name: iterator.meta.name }
+  if (iterator['isSagaIterator']) {
+    return { name: iterator['meta']['name'] }
   }
   return getMetaInfo(fn)
 }
